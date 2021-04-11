@@ -19,7 +19,7 @@ import torch
 from loguru import logger
 from tqdm import tqdm
 
-from transfer_model.utils import (
+from utils import (
     from_torch, Tensor, Array, rel_change)
 
 

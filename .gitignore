@@ -107,3 +107,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+transfer_model/transfer_data/
+transfer_model/torch-trust-ncg
+.idea
