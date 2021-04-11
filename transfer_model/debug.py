@@ -183,6 +183,8 @@ def main() -> None:
 
         del var_dict, batch, mesh, pose, beta, body_pose, global_orient
 
+        torch.cuda.empty_cache()
+
 
 if __name__ == '__main__':
     main()
