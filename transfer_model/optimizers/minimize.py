@@ -74,6 +74,8 @@ def minimize(
                     logger.info(f'[{n:05d}] {key}: {val:.4f}')
 
         prev_loss = loss.item()
+        for p in params:
+            p.grad = None
 
     # Save the final step
     if interactive:
