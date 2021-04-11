@@ -181,6 +181,8 @@ def main() -> None:
                     para_dict[key] = var_dict[key][ii].detach().cpu().numpy()
             np.savez(osp.join(para_dir, p_name), **para_dict)
 
+        del var_dict, batch, mesh, pose, beta, body_pose, global_orient
+
 
 if __name__ == '__main__':
     main()
