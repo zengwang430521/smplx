@@ -67,5 +67,7 @@ class Config:
     per_part: bool = True
     edge_fitting: EdgeFitting = EdgeFitting()
 
+    begin_index: int = 0
+
 
 conf = OmegaConf.structured(Config)

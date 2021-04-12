@@ -36,9 +36,13 @@ def parse_args(argv=None) -> OmegaConf:
 
     parser.add_argument('--exp-cfg', type=str, dest='exp_cfg',
                         help='The configuration of the experiment')
+
+    parser.add_argument('--begin-index', type=str, dest='begin_index')
+
     parser.add_argument('--exp-opts', default=[], dest='exp_opts',
                         nargs='*',
                         help='Command line arguments')
+
 
     cmd_args = parser.parse_args()
 
@@ -48,4 +52,5 @@ def parse_args(argv=None) -> OmegaConf:
     if cmd_args.exp_opts:
         cfg.merge_with(OmegaConf.from_cli(cmd_args.exp_opts))
 
+    cfg.begin_index = cmd_args.begin_index
     return cfg

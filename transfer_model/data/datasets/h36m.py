@@ -30,10 +30,15 @@ from loguru import logger
 
 
 class H36M(Dataset):
-    def __init__(self, npz_file='transfer_data/h36m_train_new.npz'):
+    def __init__(self, npz_file='transfer_data/h36m_train_new.npz', begin_index=0):
         data = np.load(npz_file)
         self.poses = data['pose']
         self.betas = data['shape']
+        self.indices = np.arange(len(self.poses))
+        self.begin_index = begin_index
+        self.poses = self.poses[begin_index:]
+        self.betas = self.betas[begin_index:]
+        self.indices = self.indices[begin_index:]
 
     def __len__(self) -> int:
         return len(self.poses)
@@ -42,7 +47,7 @@ class H36M(Dataset):
         return {
             'pose': self.poses[index].copy().astype(np.float32),
             'beta': self.betas[index].copy().astype(np.float32),
-            'indices': index,
+            'indices': self.indices[index].copy().astype(np.int32),
             # 'vertex_name': f'{index:06d}.npy',
             # 'para_name': f'{index:06d}.npz',
         }

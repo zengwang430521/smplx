@@ -109,7 +109,7 @@ def main() -> None:
 
     smpl = build_layer(model_path, model_type='smpl').to(device)
 
-    h36m_dataset = H36M()
+    h36m_dataset = H36M(begin_index=exp_cfg.begin_index)
 
     batch_size = exp_cfg.batch_size
     num_workers = exp_cfg.datasets.num_workers
